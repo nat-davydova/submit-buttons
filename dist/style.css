@@ -92,8 +92,16 @@ body a {
   cursor: pointer;
 }
 
-.submit-button--2 {
-  background-image: linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
+.submit-button__pending,
+.submit-button__loaded {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: inherit;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .submit-button--3 {
@@ -121,12 +129,7 @@ body a {
   }
 }
 .submit-button__pending--1 {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: block;
-  width: 100%;
-  height: 100%;
 }
 .submit-button__pending--1:before {
   position: absolute;
@@ -183,14 +186,9 @@ body a {
 }
 
 .submit-button__loaded--1 {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
 }
 .submit-button__loaded--1:before {
   margin-right: 10px;
@@ -222,9 +220,123 @@ body a {
   transform: translateX(0);
 }
 
-.submit-button__pending--1,
-.submit-button__loaded--1 {
+.submit-button--2 {
+  background-image: linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
+}
+
+@keyframes pending-loader-circles {
+  0% {
+    opacity: .3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes pending-loader-moving {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
+.submit-button__pending--2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submit-button__pending--2:before, .submit-button__pending--2:after,
+.submit-button__pending--2 span {
+  position: relative;
+  display: block;
+  margin-right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: .3;
+}
+.submit-button__pending--2:before, .submit-button__pending--2:after {
+  content: '';
+}
+.submit-button__pending--2:before {
+  animation-delay: 0s;
+}
+.submit-button__pending--2 span {
+  animation-delay: .4s;
+}
+.submit-button__pending--2:after {
+  animation-delay: .8s;
+}
+.submit-button__pending--2.js-active {
+  transition-property: all;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+  transition-delay: 0.3s;
+  opacity: 1;
+  visibility: visible;
+}
+.submit-button__pending--2.js-active:before {
+  animation: pending-loader-circles .8s linear infinite alternate, pending-loader-moving .2s linear 2s 1 forwards;
+}
+.submit-button__pending--2.js-active span {
+  animation: pending-loader-circles .8s linear .4s infinite alternate, pending-loader-moving .2s linear 2.1s 1 forwards;
+}
+.submit-button__pending--2.js-active:after {
+  animation: pending-loader-circles .8s linear .8s infinite alternate, pending-loader-moving .2s linear 2.2s 1 forwards;
+}
+
+.submit-button__text--2.js-active {
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
   opacity: 0;
   visibility: hidden;
-  background-image: inherit;
+}
+
+.submit-button__loaded--2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submit-button__loaded--2:before {
+  display: block;
+  width: 30px;
+  height: 30px;
+  content: '';
+  transform: rotate(0);
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+.submit-button__loaded--2:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  font-family: "Font Awesome 5 Free";
+  font-size: .9rem;
+  content: '\f00c';
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.submit-button__loaded--2.js-active {
+  transition-property: all;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+  transition-delay: 2.2s;
+  opacity: 1;
+  visibility: visible;
+}
+.submit-button__loaded--2.js-active:before {
+  transition: transform .4s linear 2.3s, border-top-color .1s linear 2.3s, border-right-color .1s linear 2.4s, border-bottom-color .1s linear 2.5s, border-left-color .1s linear 2.6s;
+  transform: rotate(360deg);
+  border-color: #fff;
+}
+.submit-button__loaded--2.js-active:after {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0.6s;
+  opacity: 1;
 }

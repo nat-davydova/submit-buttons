@@ -46,7 +46,16 @@ header.header
         .submit-buttons__content
         
           button.submit-button.submit-button--2(type="submit" title="Submit") 
-            span.submit-button__text Submit
+            
+            //visible while loading pended
+            span.submit-button__pending.submit-button__pending--2
+              span.submit-button__pending-loader--2
+            
+            //visible initially
+            span.submit-button__text.submit-button__text--2 Submit
+            
+            //visible when loaded
+            span.submit-button__loaded.submit-button__loaded--2
             
       //single button block
       .submit-buttons__block
