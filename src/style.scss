@@ -132,6 +132,7 @@ body {
   outline: none;
   border: none;
   
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -161,6 +162,16 @@ body {
     linear-gradient(to right bottom, #1affec 1%, #9f4ff9);
 }
 
+@keyframes pending-circle {
+  0% {
+    transform: rotate(0);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .submit-button__pending--1 {
   @include position-absolute($top: 0, $left: 0);
   
@@ -170,16 +181,18 @@ body {
   
   //spinning icon
   &:before {
-    @include position-absolute($top: 50%, $left: 50%);
+    @include position-absolute($top: 0, $left: 0);
     
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
     
     font: {
       family: "Font Awesome 5 Free";
       size: 1.6rem;
     }
-    
-    transform: translate(-50%, -50%);
     
     content: '\f110';
   }
@@ -194,17 +207,44 @@ body {
     
     content: '';
     
-    transform: scaleX(.4);
+    transform: scaleX(0);
     transform-origin: left center;
     
     background-image: 
       linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
     background-size: 100%;
   }
+  
+  //active state
+  &.js-active {
+    @include transition-mix($duration: .1s, $delay: .3s);
+    
+    opacity: 1;
+    visibility: visible;
+    
+    //spinning icon
+    &:before {
+      animation: pending-circle 1s infinite;
+    }
+    
+    //progress bar
+    &:after {
+      @include transition-mix($duration: 1.7s, $delay: .1s, $timing: ease-out);
+      
+      transform: scaleX(1);
+    }
+  }
 }
 
 .submit-button__text--1 {
   
+  //active state
+  &.js-active {
+    @include transition-mix($duration: .3s);
+    
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .submit-button__loaded--1 {
@@ -227,7 +267,35 @@ body {
     
     content: '\f00c';
     
-    transform: translateY(-2px);
+    transform: translate(-40px, -2px);
+  }
+  
+  //text element
+  span {
+    transform: translateX(40px);
+  }
+  
+  //active state
+  &.js-active {
+    transition:
+      opacity .1s linear 2.5s;
+    
+    opacity: 1;
+    visibility: visible;
+    
+    //completed icon
+    &:before {
+      @include transition-mix($delay: 2.6s);
+      
+      transform: translate(0, -2px);
+    }
+    
+    //text element 
+    span {
+      @include transition-mix($delay: 2.6s);
+      
+      transform: translateX(0);
+    }
   }
 }
 
@@ -235,4 +303,6 @@ body {
 .submit-button__loaded--1 {
   opacity: 0;
   visibility: hidden;
+  
+  background-image: inherit;
 }

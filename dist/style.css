@@ -88,6 +88,7 @@ body a {
   box-shadow: 0px 16px 35px 0 rgba(0, 0, 0, 0.25);
   outline: none;
   border: none;
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -111,6 +112,14 @@ body a {
   background-image: linear-gradient(to right bottom, #1affec 1%, #9f4ff9);
 }
 
+@keyframes pending-circle {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .submit-button__pending--1 {
   position: absolute;
   top: 0;
@@ -121,12 +130,15 @@ body a {
 }
 .submit-button__pending--1:before {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   font-family: "Font Awesome 5 Free";
   font-size: 1.6rem;
-  transform: translate(-50%, -50%);
   content: '\f110';
 }
 .submit-button__pending--1:after {
@@ -137,10 +149,37 @@ body a {
   width: 100%;
   height: 4px;
   content: '';
-  transform: scaleX(0.4);
+  transform: scaleX(0);
   transform-origin: left center;
   background-image: linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
   background-size: 100%;
+}
+.submit-button__pending--1.js-active {
+  transition-property: all;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+  transition-delay: 0.3s;
+  opacity: 1;
+  visibility: visible;
+}
+.submit-button__pending--1.js-active:before {
+  animation: pending-circle 1s infinite;
+}
+.submit-button__pending--1.js-active:after {
+  transition-property: all;
+  transition-duration: 1.7s;
+  transition-timing-function: ease-out;
+  transition-delay: 0.1s;
+  transform: scaleX(1);
+}
+
+.submit-button__text--1.js-active {
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .submit-button__loaded--1 {
@@ -158,11 +197,34 @@ body a {
   font-family: "Font Awesome 5 Free";
   font-size: 1.4rem;
   content: '\f00c';
-  transform: translateY(-2px);
+  transform: translate(-40px, -2px);
+}
+.submit-button__loaded--1 span {
+  transform: translateX(40px);
+}
+.submit-button__loaded--1.js-active {
+  transition: opacity .1s linear 2.5s;
+  opacity: 1;
+  visibility: visible;
+}
+.submit-button__loaded--1.js-active:before {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 2.6s;
+  transform: translate(0, -2px);
+}
+.submit-button__loaded--1.js-active span {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 2.6s;
+  transform: translateX(0);
 }
 
 .submit-button__pending--1,
 .submit-button__loaded--1 {
   opacity: 0;
   visibility: hidden;
+  background-image: inherit;
 }

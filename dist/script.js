@@ -42,7 +42,7 @@ DOM.submitBtn.forEach(elem => {
 
     } else {
 
-      //just for pen toggling part
+      //!!!just for pen toggling part!!!
       clickedElem.classList.remove('js-active');
 
       innerChildren.forEach(elem => {
