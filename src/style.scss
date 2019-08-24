@@ -63,3 +63,31 @@ body {
     background-color: $theme-font-color;
   }
 }
+
+//header styles
+.header {
+  max-width: 500px;
+  margin: 50px auto;
+  
+  text-align: center;
+}
+
+.header__title {
+  margin-bottom: 30px;
+}
+
+//content styles
+.content {
+  max-width: 600px;
+  width: 95%;
+  margin: 0 auto 40px;
+}
+
+.content__title {
+  margin-bottom: 40px;
+  
+  font: {
+    size: 20px;
+  }
+  text-align: center;
+}

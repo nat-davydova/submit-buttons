@@ -35,3 +35,25 @@ body a {
   color: #fff;
   background-color: #2c2c2c;
 }
+
+.header {
+  max-width: 500px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.header__title {
+  margin-bottom: 30px;
+}
+
+.content {
+  max-width: 600px;
+  width: 95%;
+  margin: 0 auto 40px;
+}
+
+.content__title {
+  margin-bottom: 40px;
+  font-size: 20px;
+  text-align: center;
+}
