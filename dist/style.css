@@ -47,7 +47,7 @@ body a {
 }
 
 .content {
-  max-width: 600px;
+  max-width: 700px;
   width: 95%;
   margin: 0 auto 40px;
 }
@@ -56,4 +56,13 @@ body a {
   margin-bottom: 40px;
   font-size: 20px;
   text-align: center;
+}
+
+.submit-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-buttons__title {
+  margin-bottom: 20px;
 }

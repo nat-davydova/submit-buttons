@@ -78,7 +78,7 @@ body {
 
 //content styles
 .content {
-  max-width: 600px;
+  max-width: 700px;
   width: 95%;
   margin: 0 auto 40px;
 }
@@ -90,4 +90,14 @@ body {
     size: 20px;
   }
   text-align: center;
+}
+
+//submit buttons block styles
+.submit-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-buttons__title {
+  margin-bottom: 20px;
 }
