@@ -105,15 +105,7 @@ body a {
 }
 
 .submit-button--3 {
-  background-image: linear-gradient(to right bottom, #29ff2e 1%, #ffa507);
-}
-
-.submit-button--4 {
   background-image: linear-gradient(to right bottom, #ff18ab 1%, #6e03ff);
-}
-
-.submit-button--5 {
-  background-image: linear-gradient(to right bottom, #00ffd8 1%, #007eff);
 }
 
 .submit-button--1 {
