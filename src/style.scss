@@ -164,7 +164,7 @@ body {
 .submit-button__pending--1 {
   @include position-absolute($top: 0, $left: 0);
   
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   
