@@ -110,13 +110,15 @@ body {
 }
 
 //submit button styles
+$btn-width: 200px;
+
 .submit-button {
   position: relative;
   
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
+  width: $btn-width;
   height: 54px;
   
   font: {
