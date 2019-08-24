@@ -187,10 +187,10 @@ body a {
   font-family: "Font Awesome 5 Free";
   font-size: 1.4rem;
   content: '\f00c';
-  transform: translate(-40px, -2px);
+  transform: translate(-10px, -2px);
 }
 .submit-button__loaded--1 span {
-  transform: translateX(40px);
+  transform: translateX(10px);
 }
 .submit-button__loaded--1.js-active {
   transition: opacity .1s linear 2.1s;
@@ -201,14 +201,14 @@ body a {
   transition-property: all;
   transition-duration: 0.2s;
   transition-timing-function: linear;
-  transition-delay: 2.3s;
+  transition-delay: 2.15s;
   transform: translate(0, -2px);
 }
 .submit-button__loaded--1.js-active span {
   transition-property: all;
   transition-duration: 0.2s;
   transition-timing-function: linear;
-  transition-delay: 2.3s;
+  transition-delay: 2.15s;
   transform: translateX(0);
 }
 

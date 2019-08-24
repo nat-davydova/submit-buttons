@@ -257,12 +257,12 @@ body {
     
     content: '\f00c';
     
-    transform: translate(-40px, -2px);
+    transform: translate(-10px, -2px);
   }
   
   //text element
   span {
-    transform: translateX(40px);
+    transform: translateX(10px);
   }
   
   //active state
@@ -275,14 +275,14 @@ body {
     
     //completed icon
     &:before {
-      @include transition-mix($delay: 2.3s);
+      @include transition-mix($delay: 2.15s);
       
       transform: translate(0, -2px);
     }
     
     //text element 
     span {
-      @include transition-mix($delay: 2.3s);
+      @include transition-mix($delay: 2.15s);
       
       transform: translateX(0);
     }
