@@ -160,3 +160,50 @@ body {
   background-image: 
     linear-gradient(to right bottom, #1affec 1%, #9f4ff9);
 }
+
+.submit-button__pending--1 {
+  @include position-absolute($top: 0, $left: 0);
+  
+  width: 100%;
+  height: 100%;
+  
+  //spinning icon
+  &:before {
+    @include position-absolute($top: 50%, $left: 50%);
+    
+    display: block;
+    //width: 40px;
+    //height: 40px;
+    
+    font: {
+      family: "Font Awesome 5 Free";
+      size: 1.6rem;
+    }
+    
+    transform: translate(-50%, -50%);
+    
+    content: '\f110';
+  }
+  
+  //progress bar
+  &:after {
+    @include position-absolute($bottom: 0, $left: 0);
+    
+    display: block;
+    width: 100%;
+    height: 4px;
+    
+    content: '';
+    
+    transform: scaleX(.4);
+    transform-origin: left center;
+    
+    background-image: 
+      linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
+    background-size: 100%;
+  }
+}
+
+.submit-button__text--1 {
+  display: none;
+}

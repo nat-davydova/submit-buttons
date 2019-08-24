@@ -110,3 +110,38 @@ body a {
 .submit-button--1 {
   background-image: linear-gradient(to right bottom, #1affec 1%, #9f4ff9);
 }
+
+.submit-button__pending--1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.submit-button__pending--1:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1.6rem;
+  transform: translate(-50%, -50%);
+  content: '\f110';
+}
+.submit-button__pending--1:after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 4px;
+  content: '';
+  transform: scaleX(0.4);
+  transform-origin: left center;
+  background-image: linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
+  background-size: 100%;
+}
+
+.submit-button__text--1 {
+  display: none;
+}
