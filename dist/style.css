@@ -168,7 +168,7 @@ body a {
 .submit-button__pending--1.js-active:after {
   transition-property: all;
   transition-duration: 1.7s;
-  transition-timing-function: ease-out;
+  transition-timing-function: cubic-bezier(0, 0, 0.97, 0.13);
   transition-delay: 0.1s;
   transform: scaleX(1);
 }
@@ -203,7 +203,7 @@ body a {
   transform: translateX(40px);
 }
 .submit-button__loaded--1.js-active {
-  transition: opacity .1s linear 2.5s;
+  transition: opacity .1s linear 2.1s;
   opacity: 1;
   visibility: visible;
 }
@@ -211,14 +211,14 @@ body a {
   transition-property: all;
   transition-duration: 0.2s;
   transition-timing-function: linear;
-  transition-delay: 2.6s;
+  transition-delay: 2.3s;
   transform: translate(0, -2px);
 }
 .submit-button__loaded--1.js-active span {
   transition-property: all;
   transition-duration: 0.2s;
   transition-timing-function: linear;
-  transition-delay: 2.6s;
+  transition-delay: 2.3s;
   transform: translateX(0);
 }
 

@@ -229,7 +229,7 @@ body {
     
     //progress bar
     &:after {
-      @include transition-mix($duration: 1.7s, $delay: .1s, $timing: ease-out);
+      @include transition-mix($duration: 1.7s, $delay: .1s, $timing: cubic-bezier(0, 0, 0.97, 0.13));
       
       transform: scaleX(1);
     }
@@ -278,21 +278,21 @@ body {
   //active state
   &.js-active {
     transition:
-      opacity .1s linear 2.5s;
+      opacity .1s linear 2.1s;
     
     opacity: 1;
     visibility: visible;
     
     //completed icon
     &:before {
-      @include transition-mix($delay: 2.6s);
+      @include transition-mix($delay: 2.3s);
       
       transform: translate(0, -2px);
     }
     
     //text element 
     span {
-      @include transition-mix($delay: 2.6s);
+      @include transition-mix($delay: 2.3s);
       
       transform: translateX(0);
     }

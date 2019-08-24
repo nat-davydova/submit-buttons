@@ -1,5 +1,5 @@
 const DOM = {
-  submitBtn: document.querySelectorAll('.submit-button'),
+  submitBtn: '.submit-button',
   submitPending: '.submit-button__pending',
   submitText: '.submit-button__text',
   submitLoaded: '.submit-button__loaded' };
@@ -16,18 +16,33 @@ const findChildren = elem => {
 
 };
 
+//find node parent function
+const findParent = (elem, referenceElem) => {
+
+  const className = referenceElem.slice(0, referenceElem.length);
+
+  let ind = true;
+
+  while (ind) {
+
+    if (elem.classList.contains(className)) {
+      break;
+    } else {
+      elem = elem.parentNode;
+    }
+
+  }
+
+  return elem;
+
+};
+
 //onclick function for buttons - active state
-DOM.submitBtn.forEach(elem => {
+document.querySelectorAll(DOM.submitBtn).forEach(elem => {
 
   elem.addEventListener('click', event => {
 
-    let clickedElem;
-
-    if (event.target.tagName === 'BUTTON' || event.target.tagName === 'A' || event.target.tagName === 'INPUT') {
-      clickedElem = event.target;
-    } else {
-      clickedElem = event.target.parentNode;
-    }
+    let clickedElem = findParent(event.target, 'submit-button');
 
     const innerChildren = findChildren(clickedElem);
 
