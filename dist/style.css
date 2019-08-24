@@ -91,10 +91,6 @@ body a {
   cursor: pointer;
 }
 
-.submit-button--1 {
-  background-image: linear-gradient(to right bottom, #1affec 1%, #9f4ff9);
-}
-
 .submit-button--2 {
   background-image: linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
 }
@@ -109,4 +105,8 @@ body a {
 
 .submit-button--5 {
   background-image: linear-gradient(to right bottom, #00ffd8 1%, #007eff);
+}
+
+.submit-button--1 {
+  background-image: linear-gradient(to right bottom, #1affec 1%, #9f4ff9);
 }

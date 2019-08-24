@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Submit buttons collection (animated)</title>
-  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -26,7 +27,9 @@
         <h4 class="submit-buttons__title">#1</h4>
         <div class="submit-buttons__content">
           <button class="submit-button submit-button--1" type="submit" title="Submit"> 
-            <div class="submit-button__text">Submit</div>
+            <!--visible while loading pended--><span class="submit-button__pending submit-button__pending--1"></span>
+            <!--visible initially--><span class="submit-button__text submit-button__text--1">Submit</span>
+            <!--visible when loaded--><span class="submit-button__loaded submit-button__loaded--1"></span>
           </button>
         </div>
       </div>
