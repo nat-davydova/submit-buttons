@@ -1,0 +1,465 @@
+//mixins
+@mixin transition-mix ($property: all, $duration: 0.2s, $timing: linear, $delay: 0s) {
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-timing-function: $timing;
+  transition-delay: $delay;
+}
+
+@mixin position-absolute ($top: null, $left: null, $right: null, $bottom: null) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+//basic variables
+$theme-font-color: #2c2c2c;
+
+//common styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: {
+    family: 'Karla', sans-serif;
+    size: 16px;
+  }
+  color: $theme-font-color;
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.btn {
+  @include transition-mix;
+  
+  padding: 10px 20px;
+  display: inline-block;
+  margin-right: 10px;
+  
+  background-color: #fff;
+  border: 1px solid $theme-font-color;
+  border-radius: 3px;
+  
+  cursor: pointer;
+  
+  outline: none;
+  
+  &:last-child {
+    margin-right: 0;
+  }
+  
+  &:hover,
+  &.js-active{
+    color: #fff;
+    
+    background-color: $theme-font-color;
+  }
+}
+
+//header styles
+.header {
+  max-width: 500px;
+  margin: 50px auto;
+  
+  text-align: center;
+}
+
+.header__title {
+  margin-bottom: 30px;
+}
+
+//content styles
+.content {
+  max-width: 700px;
+  width: 95%;
+  margin: 0 auto 40px;
+}
+
+.content__title {
+  margin-bottom: 40px;
+  
+  font: {
+    size: 20px;
+  }
+  text-align: center;
+}
+
+//submit buttons block styles
+.submit-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.submit-buttons__block {
+  margin-bottom: 40px;
+}
+
+.submit-buttons__title {
+  margin-bottom: 20px;
+  
+  text-align: center;
+}
+
+//submit button styles
+$btn-width: 200px;
+
+.submit-button {
+  position: relative;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $btn-width;
+  height: 54px;
+  
+  font: {
+    size: 14px;
+    weight: 700;
+  }
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.44px;
+  
+  box-shadow: 
+    0px 16px 35px 0 rgba(0, 0, 0, 0.25);
+  outline: none;
+  border: none;
+  
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.submit-button__pending,
+.submit-button__loaded {
+  @include position-absolute($top: 0, $left: 0);
+  
+  width: 100%;
+  height: 100%; 
+  
+  background-image: inherit;
+  
+  opacity: 0;
+  visibility: hidden;
+}
+
+.submit-button--3 {
+  background-image: 
+    linear-gradient(to right bottom, #ff18ab 1%, #6e03ff);
+}
+
+//button #1 styles
+.submit-button--1 {
+  background-image: 
+    linear-gradient(to right bottom, #1affec 1%, #9f4ff9);
+}
+
+@keyframes pending-circle {
+  0% {
+    transform: rotate(0);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.submit-button__pending--1 {
+  display: block;
+  
+  //spinning icon
+  &:before {
+    @include position-absolute($top: 0, $left: 0);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+    font: {
+      family: "Font Awesome 5 Free";
+      size: 1.6rem;
+    }
+    
+    content: '\f110';
+  }
+  
+  //progress bar
+  &:after {
+    @include position-absolute($bottom: 0, $left: 0);
+    
+    display: block;
+    width: 100%;
+    height: 4px;
+    
+    content: '';
+    
+    transform: scaleX(0);
+    transform-origin: left center;
+    
+    background-image: 
+      linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
+    background-size: 100%;
+  }
+  
+  //active state
+  &.js-active {
+    @include transition-mix($duration: .1s, $delay: .3s);
+    
+    opacity: 1;
+    visibility: visible;
+    
+    //spinning icon
+    &:before {
+      animation: pending-circle 1s infinite;
+    }
+    
+    //progress bar
+    &:after {
+      @include transition-mix($duration: 1.7s, $delay: .1s, $timing: cubic-bezier(0, 0, 0.97, 0.13));
+      
+      transform: scaleX(1);
+    }
+  }
+}
+
+.submit-button__text--1 {
+  
+  //active state
+  &.js-active {
+    @include transition-mix($duration: .3s);
+    
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.submit-button__loaded--1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  //completed icon
+  &:before {
+    margin-right: 10px;
+    
+    font: {
+      family: "Font Awesome 5 Free";
+      size: 1.4rem;
+    }
+    
+    content: '\f00c';
+    
+    transform: translate(-10px, -2px);
+  }
+  
+  //text element
+  span {
+    transform: translateX(10px);
+  }
+  
+  //active state
+  &.js-active {
+    transition:
+      opacity .1s linear 2.1s;
+    
+    opacity: 1;
+    visibility: visible;
+    
+    //completed icon
+    &:before {
+      @include transition-mix($delay: 2.15s);
+      
+      transform: translate(0, -2px);
+    }
+    
+    //text element 
+    span {
+      @include transition-mix($delay: 2.15s);
+      
+      transform: translateX(0);
+    }
+  }
+}
+
+//button #2 styles 
+
+.submit-button--2 {
+  background-image: 
+    linear-gradient(to right bottom, #ffce3a 1%, #ff0e69);
+}
+
+@keyframes pending-loader-circles {
+  0% {
+    opacity: .3;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pending-loader-moving {
+  0% {
+    transform: translateY(0);
+  }
+  
+  100% {
+    transform: translateY(50px);
+  }
+}
+
+.submit-button__pending--2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  //preloader parts
+  &:before,
+  &:after,
+  span {
+    position: relative;
+    
+    display: block;
+    margin-right: 5px;
+    
+    width: 10px;
+    height: 10px;
+    
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: .3;
+  }
+  
+  &:before,
+  &:after {
+    content: '';
+  }
+  
+  &:before {
+    animation-delay: 0s;
+  }
+  
+  span {
+    animation-delay: .4s;
+  }
+  
+  &:after {
+    animation-delay: .8s;
+  }
+  
+  //active state
+  &.js-active {
+    @include transition-mix($duration: .1s, $delay: .3s);
+    
+    opacity: 1;
+    visibility: visible;
+    
+    //loader parts
+    &:before {
+      animation: 
+        pending-loader-circles .8s linear infinite alternate,
+        pending-loader-moving .2s linear 2s 1 forwards;
+    }
+    
+    span {
+      animation: 
+        pending-loader-circles .8s linear .4s infinite alternate,
+        pending-loader-moving .2s linear 2.1s 1 forwards;
+    }
+    
+    &:after {
+      animation: 
+        pending-loader-circles .8s linear .8s infinite alternate,
+        pending-loader-moving .2s linear 2.2s 1 forwards;
+    }
+  }
+}
+
+.submit-button__text--2 {
+  
+  //active state
+  &.js-active {
+    @include transition-mix($duration: .3s);
+    
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.submit-button__loaded--2 {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  //circle element
+  &:before {    
+    display: block;
+    width: 30px;
+    height: 30px;
+    
+    content: '';
+    
+    transform: rotate(0);
+    
+    border: 2px solid transparent;
+    border-radius: 50%;
+  }
+  
+  //icon element
+  &:after {
+    @include position-absolute($top: 50%, $left: 50%);
+    
+    display: block;
+    
+    font: {
+      family: "Font Awesome 5 Free";
+      size: .9rem;
+    }
+    
+    content: '\f00c';
+    
+    transform: translate(-50%, -50%);
+    
+    opacity: 0;
+  }
+  
+  //active state
+  &.js-active {
+    @include transition-mix($duration: .1s, $delay: 2.2s);
+    
+    opacity: 1;
+    visibility: visible;
+    
+    //circle element
+    &:before {
+      transition:
+        transform .4s linear 2.3s,
+        border-top-color .1s linear 2.3s,
+        border-right-color .1s linear 2.4s,
+        border-bottom-color .1s linear 2.5s,
+        border-left-color .1s linear 2.6s;
+      
+      transform: rotate(360deg);
+      
+      border-color: #fff;
+    }
+    
+    //icon element
+    &:after {
+      @include transition-mix($delay: .6s);
+    
+      opacity: 1;
+    }
+  }
+}

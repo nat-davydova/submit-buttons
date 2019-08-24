@@ -1,0 +1,60 @@
+//PEN HEADER
+header.header
+  h1.header__title Submit buttons collection
+  .header__btns.btns
+    a.header__btn.btn(href="https://github.com/nat-davydova/submit-buttons" title="Check on Github" target="_blank") Check on Github
+    
+//PEN CONTENT
+.content
+
+  //content title
+  h2.content__title 
+    | Click 'Submit' buttons to check the animations 
+    br
+    | (click again to restart)
+  
+  //content inner
+  .content__inner
+  
+    //buttons block
+    .submit-buttons
+    
+      //single button block
+      .submit-buttons__block
+      
+        h4.submit-buttons__title #1
+        
+        .submit-buttons__content
+        
+          button.submit-button.submit-button--1(type="submit" title="Submit") 
+          
+            //visible while loading pended
+            span.submit-button__pending.submit-button__pending--1
+            
+            //visible initially
+            span.submit-button__text.submit-button__text--1 Submit
+            
+            //visible when loaded
+            span.submit-button__loaded.submit-button__loaded--1 
+              span Success!
+            
+      //single button block
+      .submit-buttons__block
+      
+        h4.submit-buttons__title #2
+        
+        .submit-buttons__content
+        
+          button.submit-button.submit-button--2(type="submit" title="Submit") 
+            
+            //visible while loading pended
+            span.submit-button__pending.submit-button__pending--2
+              span.submit-button__pending-loader--2
+            
+            //visible initially
+            span.submit-button__text.submit-button__text--2 Submit
+            
+            //visible when loaded
+            span.submit-button__loaded.submit-button__loaded--2
+            
+            
