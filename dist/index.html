@@ -38,7 +38,11 @@
       <div class="submit-buttons__block">
         <h4 class="submit-buttons__title">#2</h4>
         <div class="submit-buttons__content">
-          <button class="submit-button submit-button--2" type="submit" title="Submit"> <span class="submit-button__text">Submit</span></button>
+          <button class="submit-button submit-button--2" type="submit" title="Submit"> 
+            <!--visible while loading pended--><span class="submit-button__pending submit-button__pending--2"><span class="submit-button__pending-loader--2"></span></span>
+            <!--visible initially--><span class="submit-button__text submit-button__text--2">Submit</span>
+            <!--visible when loaded--><span class="submit-button__loaded submit-button__loaded--2"></span>
+          </button>
         </div>
       </div>
       <!--single button block-->
